@@ -25,6 +25,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 3px solid black;
     
     
     ul{

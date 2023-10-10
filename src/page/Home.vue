@@ -26,7 +26,7 @@
         <div id="solver" class="sudoku">
             <table id="sudoku-grid">
                 <tr v-for="(row, rowIndex) in sudokuBoard" :key="rowIndex">
-                    <td v-for="(cell, colIndex) in row" :key="colIndex" :class="{ 'initial': cell !== 0}">
+                    <td v-for="(cell, colIndex) in row" :key="colIndex" :class="{ 'solve': cell !== 0}">
                         {{ cell }}
                     </td>
                 </tr>
@@ -59,7 +59,6 @@ export default {
         [0, 5, 0, 0, 1, 0, 0, 0, 0],
         [2, 0, 6, 0, 0, 0, 3, 0, 0],
         ],
-        delayBetweenNumbers: 100,
         };
     },
     methods: {
@@ -136,6 +135,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url(./src/style/reset.css);
+
 @keyframes fadeIn {
                 0% {
                     opacity: 0;
@@ -168,7 +169,6 @@ export default {
                 color: #1a1a1a;
                 position: relative;
             }
-
             .description {
                 font-family: 'Roboto', sans-serif;
                 font-size: 1.2rem;
@@ -199,19 +199,14 @@ export default {
                 position: relative;
             }
         }
-
-
-
-
+        
         .sudoku {
             width: 100%;
             
-
             table {
                 border-collapse: collapse;
                 margin: 20px auto;
-                border: 4px solid #D8B259;
-
+                border: 4px solid #D8B259;                
             }
 
             table tr:nth-child(3n) td,
@@ -239,13 +234,11 @@ export default {
                 &:hover {
                     cursor: pointer;
                     background-color: #D8B259;
-                    transition: all 0.2s ease-in-out;
+                    transition: background-color 0.2s ease-in-out;
                 }
             }
 
-            
-
-            .initial {
+            .solve {
                 color: #1a1a1a; 
             }
         }
@@ -266,18 +259,16 @@ export default {
                 color: #D8B259;
                 border: none;
                 cursor: pointer;
+                transition: cubic-bezier(0.76, 0.06, 0.78, 1.27) .2s;
 
                 &:hover {
                 background-color: #D8B259;
                 color: #1a1a1a;
+                transform: scale(1.1);
                 }
                 
-            }
-
-            
-        }
-        
-        
+            } 
+        } 
     }
 
     .spacer {
@@ -288,8 +279,6 @@ export default {
         width: 100%;
         margin-top: 15rem;
     }
-
-
     .sudoku td:not(:empty) {
     animation-name: fadeIn;
     animation-duration: 1s;

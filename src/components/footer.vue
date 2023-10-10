@@ -22,6 +22,8 @@ export default {
 <style lang="scss">
 .footer{
   height: 140px;
+  border-top: 1px solid black;
+  padding-top: 20px;
 
   .top{
     display:flex;
