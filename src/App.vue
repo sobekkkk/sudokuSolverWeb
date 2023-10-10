@@ -3,7 +3,7 @@
   <div id="app">
     <Header/>
     <Home/>
-    <Footer/>
+
   </div>
 
 </template>
@@ -37,8 +37,7 @@ export default{
 #app{
   font-family: 'Roboto', sans-serif;
   padding: 0px 20px;
-  height: 100vh;
-  border: 1px solid pink;
+
 
 }
 
