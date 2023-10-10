@@ -3,6 +3,7 @@
   <div id="app">
     <Header/>
     <Home/>
+    <Footer/>
 
   </div>
 
@@ -18,8 +19,9 @@ export default{
   name: 'App',
   components : {
     Home,
-    Footer,
-    Header
+    Header,
+    Footer
+    
 
   }
 

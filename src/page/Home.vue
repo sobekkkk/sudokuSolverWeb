@@ -38,6 +38,7 @@
                 </button>
             </div>
         </div>
+        <div class="spacer--footer"></div>
     </div>
 </div>
 </template>
@@ -146,9 +147,7 @@ export default {
 
 
 .home {
-    scroll-behavior: smooth;
     width: 100%;
-    height: 80vh;
 
     .main {
         width: 100%;
@@ -267,13 +266,15 @@ export default {
                 color: #D8B259;
                 border: none;
                 cursor: pointer;
+
+                &:hover {
+                background-color: #D8B259;
+                color: #1a1a1a;
+                }
                 
             }
 
-            button:hover {
-                background-color: #D8B259;
-                color: #1a1a1a;
-            }
+            
         }
         
         
@@ -281,7 +282,11 @@ export default {
 
     .spacer {
         width: 100%;
-        height: 25%;
+        margin-top: 25rem;
+    }
+    .spacer--footer{
+        width: 100%;
+        margin-top: 15rem;
     }
 
 
