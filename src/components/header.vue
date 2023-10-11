@@ -18,6 +18,30 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto:wght@100&display=swap');
 
+@media screen and (max-width: 900px){
+    .header{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        & ul{
+            margin-top: 2rem;
+        }
+    }
+}
+
+@media screen and (max-width:600px){
+    .header{
+        & ul{
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+            & li{
+                display: none;
+            }
+        }
+    }
+}
 
 .header{
     width: 100%;
@@ -28,7 +52,7 @@ export default {
     border-bottom: 3px solid black;
     
     
-    ul{
+    & ul{
       display: flex;
       list-style: none; 
       
@@ -50,7 +74,7 @@ export default {
           }
     }
 
-    .logo{
+    & .logo{
       font-family: 'Dela Gothic One', cursive;
       font-size: 2rem;
       font-weight: 700;
