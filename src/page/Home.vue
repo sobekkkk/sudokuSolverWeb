@@ -44,97 +44,133 @@
 </template>
 
 <script>
-export default {
-    name: "Home",
-    data() {
-    return {
-        sudokuBoard: [
-        [3, 4, 5, 0, 0, 0, 0, 0, 8],
-        [6, 1, 0, 0, 8, 3, 5, 4, 9],
-        [7, 9, 0, 0, 4, 5, 0, 0, 6],
-        [0, 0, 0, 1, 5, 7, 0, 0, 0],
-        [0, 0, 0, 0, 6, 4, 9, 0, 0],
-        [0, 7, 1, 9, 0, 0, 4, 0, 0],
-        [0, 0, 9, 0, 2, 0, 6, 0, 4],
-        [0, 5, 0, 0, 1, 0, 0, 0, 0],
-        [2, 0, 6, 0, 0, 0, 3, 0, 0],
-        ],
-        };
-    },
-    methods: {
-        ///
-    solveSudoku() {
-        const board = this.sudokuBoard;
-        
-        function findEmptyCell(board) {
-        for (let i = 0; i < 9; i++) {
-            for (let j = 0; j < 9; j++) {
-            if (board[i][j] === 0) {
-                return [i, j];
+    export default {
+        name: "Home",
+        data() {
+            return {
+                sudokuBoard: [
+                    [3, 4, 5, 0, 0, 0, 0, 0, 8],
+                    [6, 1, 0, 0, 8, 3, 5, 4, 9],
+                    [7, 9, 0, 0, 4, 5, 0, 0, 6],
+                    [0, 0, 0, 1, 5, 7, 0, 0, 0],
+                    [0, 0, 0, 0, 6, 4, 9, 0, 0],
+                    [0, 7, 1, 9, 0, 0, 4, 0, 0],
+                    [0, 0, 9, 0, 2, 0, 6, 0, 4],
+                    [0, 5, 0, 0, 1, 0, 0, 0, 0],
+                    [2, 0, 6, 0, 0, 0, 3, 0, 0],
+                ],
+            };
+        },
+        methods: {
+            ///
+            solveSudoku() {
+                const board = this.sudokuBoard;
+
+                function findEmptyCell(board) {
+                    for (let i = 0; i < 9; i++) {
+                        for (let j = 0; j < 9; j++) {
+                            if (board[i][j] === 0) {
+                                return [i, j];
+                            }
+                        }
+                    }
+                    return null;
                 }
-            }
-        }
-        return null;
-        }
 
-        function usedInRow(board, num, row) {
-        return board[row].includes(num);
-        }
+                function usedInRow(board, num, row) {
+                    return board[row].includes(num);
+                }
 
-        function usedInCol(board, num, col) {
-        return board.map((row) => row[col]).includes(num);
-        }
+                function usedInCol(board, num, col) {
+                    return board.map((row) => row[col]).includes(num);
+                }
 
-        function usedInSquare(board, num, row, col) {
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (board[i + row][j + col] === num) {
-                    return true;
-            }
-            }
-        }
-        return false;
-        }
+                function usedInSquare(board, num, row, col) {
+                    for (let i = 0; i < 3; i++) {
+                        for (let j = 0; j < 3; j++) {
+                            if (board[i + row][j + col] === num) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
 
-        function isValid(board, num, row, col) {
-        return (
-            !usedInRow(board, num, row) &&
-            !usedInCol(board, num, col) &&
-            !usedInSquare(board, num, row - (row % 3), col - (col % 3))
-        );
-        }
+                function isValid(board, num, row, col) {
+                    return (
+                        !usedInRow(board, num, row) &&
+                        !usedInCol(board, num, col) &&
+                        !usedInSquare(board, num, row - (row % 3), col - (col % 3))
+                    );
+                }
 
-        const emptyCell = findEmptyCell(board);
-        if (!emptyCell) { 
-            return true; 
-        } 
-        
-
-        const [row, col] = emptyCell;
-
-        for (let num = 1; num <= 9; num++) {
-            if (isValid(board, num, row, col)) {
-                board[row][col] = num;
-
-                if (this.solveSudoku()) {
+                const emptyCell = findEmptyCell(board);
+                if (!emptyCell) {
                     return true;
                 }
 
-            board[row][col] = 0;
-        }
-        }
-        
-        return false;
-    },
-    
-    refreshPage() {
-        location.reload();
-    },
-},
-};
+                const [row, col] = emptyCell;
+
+                for (let num = 1; num <= 9; num++) {
+                    if (isValid(board, num, row, col)) {
+                        board[row][col] = num;
+                        if (this.solveSudoku()) {
+                            return true;
+                        }
+                        board[row][col] = 0;
+                    }
+                }
+                return false;
+            },
+
+            refreshPage() {
+                location.reload();
+            },
+        },
+    };
 </script>
 
 <style lang="scss">
+
+@media screen and (max-width: 1114px)  {
+    .home{
+        .main{
+            .title{
+                .main--title{
+                    h1{
+                        text-align: center;
+                    }
+                }
+
+                .description{
+                    p{
+                        text-align: center;
+                    }
+                }
+
+            }
+        
+
+            .spacer{
+                width: 100%;
+                margin-top: 10rem;
+            }
+
+            .spacer--footer{
+                width: 100%;
+                margin-top: 10rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+html { 
+    scroll-behavior: smooth
+}
 
 @keyframes fadeIn {
                 0% {
@@ -160,6 +196,7 @@ export default {
 
 .home {
     width: 100%;
+
 
     .main {
         width: 100%;
@@ -303,6 +340,7 @@ export default {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-fill-mode: both;
-}
+    }
+
 }
 </style>
