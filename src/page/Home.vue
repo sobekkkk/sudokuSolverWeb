@@ -141,12 +141,15 @@
                         text-align: center;
                     }
                 }
+
                 .description{
-                    .p{
+                    p{
                         text-align: center;
                     }
                 }
+
             }
+        }
 
             .spacer{
                 width: 100%;
@@ -159,9 +162,8 @@
             }
 
         }
-    
-    }
 }
+
 
 
 
