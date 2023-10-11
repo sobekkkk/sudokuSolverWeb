@@ -20,6 +20,27 @@ export default {
 </script>
 
 <style lang="scss">
+
+@media screen and (max-width:600px){
+    .footer{
+        & .top{
+            flex-direction: column;
+            align-items: center;
+            margin-top: .5rem;
+            & p{
+                text-align: center;
+            }
+        }
+        & .bottom{
+            
+            & p, a{
+                padding-bottom: 2rem;
+            }
+        }
+    }
+}
+
+
 .footer{
   height: 140px;
   border-top: 1px solid black;

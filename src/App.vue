@@ -34,7 +34,6 @@ export default{
 
 
 <style lang="scss">
-@import url('./style/reset.css');
 
 #app{
   font-family: 'Roboto', sans-serif;
