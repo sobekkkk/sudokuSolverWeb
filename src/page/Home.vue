@@ -141,6 +141,11 @@
                         text-align: center;
                     }
                 }
+                .description{
+                    .p{
+                        text-align: center;
+                    }
+                }
             }
 
             .spacer{
