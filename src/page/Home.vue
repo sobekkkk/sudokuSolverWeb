@@ -135,7 +135,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url(./src/style/reset.css);
 
 @keyframes fadeIn {
                 0% {
@@ -145,6 +144,18 @@ export default {
                     opacity: 1;
                 }
             }
+
+@keyframes HeroSlideIn {
+    0% {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 
 .home {
@@ -162,6 +173,11 @@ export default {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            animation: HeroSlideIn 1s forwards .2s ease;
+            font-size: 0;
+            will-change: transform, opacity, box-size;
+
 
             .main--title {
                 font-family: 'Dela Gothic One', cursive;
@@ -185,6 +201,10 @@ export default {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            animation: HeroSlideIn 1s forwards .2s ease;
+            font-size: 0;
+            will-change: transform, opacity, box-size;
 
             svg {
                 width: 50px;
